@@ -36,7 +36,7 @@ It works in Gmail, Apple Mail, Outlook, Yahoo and every email platform that lets
 
 ## Install
 
-You need a free Email Countdowns workspace. The skill walks you through it, or you can [register now](https://emailcountdowns.com/register). It needs no card and includes 1,000 countdown views a month.
+You need a free Email Countdowns workspace. The skill walks you through it, or you can [register now](https://emailcountdowns.com/register). It needs no card, and every new account gets 1,000 free countdown views.
 
 ### Claude (claude.ai and desktop)
 
@@ -176,7 +176,7 @@ Gmail, Apple Mail, Yahoo and Outlook on the web and mobile play the animation. O
 
 ### What does it cost?
 
-Signing up is free and needs no card, and the free allowance is 1,000 countdown views a month. Current rates are on the [pricing page](https://emailcountdowns.com/pricing).
+Every new account gets 1,000 free countdown views, once, with no card and no subscription. After that you pay per view, but only if the workspace owner turns billing on. Until then, timers show a blank image once the free views are used. Current rates are on the [pricing page](https://emailcountdowns.com/pricing).
 
 ### Is my data safe with the agent?
 

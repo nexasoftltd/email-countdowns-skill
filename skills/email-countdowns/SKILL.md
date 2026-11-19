@@ -24,7 +24,7 @@ Do not ask the user to paste a password into the chat. Never type a password for
 
 Ask once: "Do you already have an Email Countdowns account?"
 
-**No account.** Send the user to https://emailcountdowns.com/register. It is free and needs no card. They enter a name, an optional workspace name, an email address and a password. If you control a browser, you may open that page and fill in the name, workspace and email the user gave you; the user types the password and presses Register themselves.
+**No account.** Send the user to https://emailcountdowns.com/register. Every new account gets 1,000 free countdown views, once, with no card and no subscription, so you can create and test timers without spending anything. They enter a name, an optional workspace name, an email address and a password. If you control a browser, you may open that page and fill in the name, workspace and email the user gave you; the user types the password and presses Register themselves.
 
 **Connect it.** Pick the route that fits the client you are running in:
 
@@ -117,6 +117,8 @@ Rules:
 Platform-specific steps (Klaviyo, Mailchimp, Resend, HubSpot and others) are in [references/email-platforms.md](references/email-platforms.md). If you can edit the draft through another connected tool, insert the HTML there, then read the draft back and check the `src` is unchanged. If you cannot edit the draft, give the user the HTML and the image URL with one sentence on where to paste each.
 
 Do not send or schedule the campaign. That stays with the user.
+
+Before a large send, check the workspace has views to spare. Once the 1,000 free views are used, timers show a blank image until the workspace owner turns on pay-per-view billing at https://emailcountdowns.com/pricing. If the list is bigger than the free views left, tell the user to enable billing first.
 
 ## 6. Report back
 
