@@ -1,0 +1,128 @@
+openapi: 3.1.0
+info:
+  title: Email Countdowns
+  version: 1.0.0
+  description: Create hosted countdown timer GIFs for email campaigns and return the embed HTML.
+servers:
+  - url: https://emailcountdowns.com/api
+components:
+  securitySchemes:
+    workspaceKey:
+      type: http
+      scheme: bearer
+  schemas:
+    Countdown:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        description: { type: [string, "null"] }
+        expires_at: { type: string, format: date-time, description: "Deadline in UTC." }
+        timezone: { type: string }
+        style_id: { type: integer }
+        font_id: { type: integer }
+        text_colour: { type: string }
+        background_colour: { type: string }
+        gif_url: { type: string, description: "Hosted live GIF. Use exactly as returned." }
+        embed_html: { type: string, description: "Ready-to-paste img tag for the email HTML." }
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+    CountdownInput:
+      type: object
+      required: [name, date, time, timezone]
+      properties:
+        campaign_key:
+          type: string
+          maxLength: 120
+          description: Stable slug for this deadline, such as black-friday-2026. Retrying with the same key and settings returns the existing timer.
+        name: { type: string, maxLength: 255, description: "Internal name, also used as alt text." }
+        date: { type: string, pattern: "^\\d{4}-\\d{2}-\\d{2}$", description: "Deadline date, YYYY-MM-DD." }
+        time: { type: string, pattern: "^\\d{2}:\\d{2}$", description: "Deadline time, 24-hour HH:MM." }
+        timezone: { type: string, description: "IANA timezone such as Europe/London." }
+        description: { type: string, maxLength: 1000 }
+        style_id: { type: integer, description: "Only use an ID the user provides." }
+        font_id: { type: integer, description: "Only use an ID the user provides." }
+        text_colour: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" }
+        background_colour: { type: string, description: "#RRGGBB or transparent." }
+security:
+  - workspaceKey: []
+paths:
+  /countdowns:
+    get:
+      operationId: listCountdowns
+      summary: List the workspace's countdown timers, newest first.
+      responses:
+        "200":
+          description: Timers.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: { type: array, items: { $ref: "#/components/schemas/Countdown" } }
+    post:
+      operationId: createCountdown
+      summary: Create a countdown timer for a confirmed future deadline.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/CountdownInput" }
+      responses:
+        "200":
+          description: Existing timer returned for a repeated campaign_key.
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/Countdown" } } }
+        "201":
+          description: Timer created.
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/Countdown" } } }
+        "422":
+          description: Validation failed, for example a past deadline or a reused campaign_key with different settings.
+  /countdowns/{id}:
+    put:
+      operationId: updateCountdown
+      summary: Change a timer's name, colours or deadline. Send date, time and timezone together to move the deadline.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                description: { type: [string, "null"] }
+                date: { type: string }
+                time: { type: string }
+                timezone: { type: string }
+                text_colour: { type: string }
+                background_colour: { type: string }
+      responses:
+        "200":
+          description: Updated timer.
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/Countdown" } } }
+  /countdowns/{id}/embed:
+    get:
+      operationId: getCountdownEmbed
+      summary: Get the image URL and embed HTML for an existing timer.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Embed details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  countdown_id: { type: integer }
+                  name: { type: string }
+                  url: { type: string }
+                  html: { type: string }
+                  expires_at: { type: string, format: date-time }

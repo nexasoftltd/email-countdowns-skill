@@ -1,0 +1,10 @@
+{
+  "name": "email-countdowns",
+  "version": "1.0.0",
+  "description": "Create live countdown timer GIFs for marketing emails and place the embed code in your draft.",
+  "author": { "name": "Nexasoft Ltd", "url": "https://emailcountdowns.com" },
+  "homepage": "https://emailcountdowns.com",
+  "repository": "https://github.com/nexasoftltd/email-countdowns-skill",
+  "license": "MIT",
+  "keywords": ["email", "countdown", "countdown-timer", "email-marketing", "gif", "klaviyo", "mailchimp", "mcp"]
+}

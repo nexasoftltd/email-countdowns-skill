@@ -1,0 +1,11 @@
+{
+  "name": "email-countdowns",
+  "owner": { "name": "Nexasoft Ltd", "url": "https://emailcountdowns.com" },
+  "plugins": [
+    {
+      "name": "email-countdowns",
+      "source": "./",
+      "description": "Create live countdown timer GIFs for marketing emails, connect the Email Countdowns MCP server and place the embed code in your draft."
+    }
+  ]
+}

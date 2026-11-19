@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "email-countdowns": {
+      "type": "http",
+      "url": "https://emailcountdowns.com/mcp/countdowns"
+    }
+  }
+}
