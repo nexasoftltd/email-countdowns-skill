@@ -118,7 +118,7 @@ Platform-specific steps (Klaviyo, Mailchimp, Resend, HubSpot and others) are in 
 
 Do not send or schedule the campaign. That stays with the user.
 
-Before a large send, check the workspace has views to spare. Once the 1,000 free views are used, timers show a blank image until the workspace owner turns on pay-per-view billing at https://emailcountdowns.com/pricing. If the list is bigger than the free views left, tell the user to enable billing first.
+Before a large send, check the workspace has views to spare. Once the 1,000 free views are used, timers show a blank image until the workspace owner turns on paid usage under Usage and billing at https://emailcountdowns.com/dashboard/account. If the list is bigger than the free views left, tell the user to enable billing first.
 
 ## 6. Report back
 
